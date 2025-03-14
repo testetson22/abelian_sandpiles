@@ -1,13 +1,11 @@
 import numpy as np
-#TODO need to handle/enforace boundary contraints based on pile size and redistribution
-sandpile = np.zeros((5, 5), dtype=np.uint32)
-sandpile[2, 2] = 4
-
+#TODO need to handle/enforce boundary contraints based on pile size and redistribution
 
 class SandPile():
     def __init__(self, x, y, z):
         self.sandpile = np.zeros((x, y), dtype=np.uint32)
-        sandpile[2, 2] = z
+        #TODO calculate centerpoint
+        self.sandpile[2, 2] = z
         
     def apply_gravity(self):
         sandpile = self.sandpile
