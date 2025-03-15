@@ -13,9 +13,12 @@ class SandPile():
         
         self.sandpile = np.zeros((x, y), dtype=np.uint32)
         rows, cols = self.sandpile.shape
-        row = rows // 2
-        col = cols // 2        
-        self.sandpile[row, col] = z
+        self.center_row = rows // 2
+        self.center_col = cols // 2        
+        self.sandpile[self.center_row, self.center_col] = z
+        
+    def get_sandpile_center_point(self):
+        return (self.center_row, self.center_col)
 
     def apply_gravity(self):
         """Applying gravity will cause qny pile with a height greater than 4 to collapse and be redistributed to adjacent positions in the array
