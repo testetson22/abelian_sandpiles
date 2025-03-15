@@ -1,5 +1,5 @@
 import numpy as np
-#TODO need to handle/enforce boundary contraints based on pile size and redistribution
+#TODO need to handle/enforce boundary constraints based on pile size and redistribution
 
 class SandPile():
     def __init__(self, x, y, z):
