@@ -10,9 +10,7 @@ class SandPile():
             y (int): array dimension
             z (int): specifies pile height
         """
-        #TODO decrement should be derived from the max height and number of distributions.
-        self.max_height = 4
-        self.decrement = self.max_height
+        
         self.sandpile = np.zeros((x, y), dtype=np.uint32)
         rows, cols = self.sandpile.shape
         row = rows // 2
@@ -26,8 +24,10 @@ class SandPile():
             SandPile: a sandpile to apply gravity constraints to. 
         """
         sandpile = self.sandpile
-        max_height = self.max_height
-        decrement = self.decrement
+        #TODO max_height, reduce_pile_by, and distribution_incr should be either inputs or calculatable.
+        max_height = 4
+        reduce_pile_by = 4
+        distribution_incr = 1
         indicies = list(zip(*np.where(sandpile >= max_height)))
         if not indicies:
             sandpile
@@ -38,8 +38,8 @@ class SandPile():
                 y = index[1]
                 indicies_to_incr = [(x-1, y),(x, y-1),(x, y+1),(x+1, y)]
                 while sandpile[x, y] >= max_height:
-                    sandpile[x, y] -= decrement
+                    sandpile[x, y] -= reduce_pile_by
                     for x, y in indicies_to_incr:
-                        sandpile[x, y] += decrement
+                        sandpile[x, y] += distribution_incr
             self.apply_gravity()            
         return sandpile
