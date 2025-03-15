@@ -7,3 +7,4 @@ Simulates gravity being applied to a sandpile. Super simple implemention; may ha
 ## TODO List
 - PyTests and linting
 - GitHub actions for demo and tests
+- Profile and optimize as needed
