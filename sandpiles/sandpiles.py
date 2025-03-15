@@ -19,11 +19,10 @@ class SandPile():
                 index = (indicies.pop())
                 x = index[0]
                 y = index[1]
+                indicies_to_incr = [(x-1, y),(x, y-1),(x, y+1),(x+1, y)]
                 while sandpile[x, y] >= 4:
                     sandpile[x, y] -= 4
-                    sandpile[x-1, y] += 1
-                    sandpile[x, y-1] += 1
-                    sandpile[x, y+1] += 1
-                    sandpile[x+1, y] += 1
+                    for x, y in indicies_to_incr:
+                        sandpile[x, y] += 1
             self.apply_gravity()            
         return sandpile
