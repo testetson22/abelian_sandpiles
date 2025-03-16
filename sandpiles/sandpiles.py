@@ -47,9 +47,9 @@ class SandPile():
                 indicies_to_incr = [(x-1, y),(x, y-1),(x, y+1),(x+1, y)]
                 while sandpile[x, y] >= max_height:
                     sandpile[x, y] -= reduce_pile_by
-                    for x, y in indicies_to_incr:
+                    for incx, incy in indicies_to_incr:
                         try:
-                            sandpile[x, y] += distribution_incr
+                            sandpile[incx, incy] += distribution_incr
                         except IndexError:
                             raise IndexError(f"Sandpile height was too high to distribute within the array dimensions")
             self.apply_gravity()            
