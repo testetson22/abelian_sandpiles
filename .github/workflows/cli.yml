@@ -12,14 +12,17 @@ on:
         type: number
         description: X axis for sandpile dimensions
         default: 5
+        required: true
       y:
         type: number
         description: Y axis for sandpile dimensions
         default: 5
+        required: true
       z:
         type: number
         description: Z axis for sandpile dimension AKA sandpile height
         default: 8
+        required: true
 
 
 permissions:
@@ -43,4 +46,4 @@ jobs:
         bash ./setup.sh
     - name: Run Sandpiles CLI
       run: |
-        sandpiles ${{ github.event.inputs.x}} ${{ github.event.inputs.y }} ${{ github.event.inputs.z }}
+        sandpiles ${{github.event.inputs.x}} ${{github.event.inputs.y}} ${{github.event.inputs.z}}
