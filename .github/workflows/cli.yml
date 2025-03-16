@@ -1,0 +1,46 @@
+# Install Python dependencies, run tests, lint, and measure coverage
+name: Run Sandpiles Module CLI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      x:
+        type: number
+        description: X axis for sandpile dimensions
+        default: 5
+      y:
+        type: number
+        description: Y axis for sandpile dimensions
+        default: 5
+      z:
+        type: number
+        description: Z axis for sandpile dimension AKA sandpile height
+        default: 8
+
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Setup Sandpiles module
+      run: |
+        bash ./setup.sh
+    - name: Run Sandpiles CLI
+      run: |
+        sandpiles ${{ github.event.inputs.x}} ${{ github.event.inputs.y }} ${{ github.event.inputs.z }}
