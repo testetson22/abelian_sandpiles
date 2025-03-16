@@ -10,3 +10,4 @@ Simulates gravity being applied to a sandpile per the Abelian sandpile model. Si
 
 ## TODO 
 - GitHub actions for demo and tests
+- Flask App
