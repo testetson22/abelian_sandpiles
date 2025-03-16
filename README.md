@@ -9,5 +9,6 @@ Simulates gravity being applied to a sandpile per the Abelian sandpile model. Si
 - `pytest --cov=sandpiles tests/`
 
 ## TODO 
+- matplotlib visuals
 - GitHub actions for demo and tests
 - Flask App
