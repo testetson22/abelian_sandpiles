@@ -7,10 +7,10 @@ Simulates gravity being applied to a sandpile per the Abelian sandpile model. Si
 
 ## Run Tests
 ### Locally
-`pytest --cov=sandpiles tests/`
+Run : `pytest --cov=sandpiles tests/` from repository root
 ### GitHub Actions
-`Run Pytest w/ linting and coverage`
-`Demo Sandpiles Module CLI`
+1. `Run Pytest w/ linting and coverage`
+2. `Demo Sandpiles Module CLI`
 
 
 ## TODO 
