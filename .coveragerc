@@ -1,0 +1,4 @@
+[run]
+omit = 
+    sandpiles/__main__.py
+    tests/

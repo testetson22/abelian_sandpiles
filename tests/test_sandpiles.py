@@ -1,4 +1,4 @@
-from sandpiles.sandpiles import *
+from sandpiles.sandpiles import SandPile
 import pytest
 import numpy as np
 
@@ -55,10 +55,20 @@ def test_sandpile_center_point(x, y, z, center_x, center_y):
                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
 ])
-def test_abelian_sandpile(x, y, z, expected_sandpile):
+def test_abelian_sandpile_gravity(x, y, z, expected_sandpile):
     sandpile = SandPile(x, y, z)
     abelian_sandpile = sandpile.apply_gravity()
     np.testing.assert_array_equal(abelian_sandpile, expected_sandpile)
+    
+
+@pytest.mark.parametrize("x,y,z,exception_value", [
+    (10, 10, 1000, "Sandpile height was too high to distribute within the array dimensions")
+])
+def test_abelian_sandpile_gravity_negative(x, y, z, exception_value):
+    sandpile = SandPile(x, y, z)
+    with pytest.raises(Exception) as exp:
+        sandpile.apply_gravity()
+    assert str(exp.value) == exception_value
     
     
 @pytest.mark.parametrize("x,y,z,exception_value", [

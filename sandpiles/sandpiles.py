@@ -9,22 +9,18 @@ class SandPile():
             y (int): array dimension
             z (int): specifies pile height
         """
+        
+        #TODO consider separating some of this stuff out into functions for testability
         if not all(isinstance(i, int) for i in [x, y, z]):
             raise TypeError("Sandpile array dimensions and pile height must be int type")
         if not all(i > 0 for i in [x, y]):
             raise ValueError("Sandpile array dimensions must be greater than zero")
         
-        try:
-            self.sandpile = np.zeros((x, y), dtype=np.uint32)
-        except ValueError as exp:
-            raise ValueError("Sandpile array dimensions must not be negative")
+        self.sandpile = np.zeros((x, y), dtype=np.uint32)
         rows, cols = self.sandpile.shape
         self.center_row = rows // 2
         self.center_col = cols // 2
-        if (self.center_row > 0 or self.center_col > 0):
-            self.sandpile[self.center_row, self.center_col] = z
-        else:
-            raise IndexError("Sandpile array dimensions cannot be zero")
+        self.sandpile[self.center_row, self.center_col] = z
         
     def get_sandpile_center_point(self):
         return (self.center_row, self.center_col)
@@ -54,7 +50,7 @@ class SandPile():
                     for x, y in indicies_to_incr:
                         try:
                             sandpile[x, y] += distribution_incr
-                        except IndexError as exp:
-                            raise IndexError(f"Sandpile height was too high to distribute within the array dimensions -> {str(exp)}")
+                        except IndexError:
+                            raise IndexError(f"Sandpile height was too high to distribute within the array dimensions")
             self.apply_gravity()            
         return sandpile
