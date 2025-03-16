@@ -1,11 +1,7 @@
 # Install Python dependencies, run tests, lint, and measure coverage
-name: Run Sandpiles Module CLI
+name: Demo Sandpiles Module CLI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
   workflow_dispatch:
     inputs:
       x:
